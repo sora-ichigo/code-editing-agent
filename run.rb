@@ -19,6 +19,11 @@ class Agent
 
     @chat.on_end_message do |message|
       if message.tool_call?
+        # AIエージェントのメッセージを表示
+        if message.content && !message.content.empty?
+          puts "Agent: #{message.content}"
+        end
+        
         puts ""
         puts "ツールを実行します"
         message.tool_calls.each do |tool_call|
